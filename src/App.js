@@ -10,15 +10,15 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    console.log(await get());
-    this.setState({ thing: 'yo' });
+    const { data : { hello : greeting } } = await get();
+    this.setState({ greeting });
   }
 
   render() {
-    console.log(this.state);
+    const { greeting } = this.state;
     return (
       <div className="App">
-
+        <h1>{greeting}</h1>
       </div>
     );
   }
