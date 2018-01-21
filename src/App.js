@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { get } from './services/graphql-api';
+
 class App extends Component {
   constructor() {
     super();
     this.state = {};
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    console.log(await get());
     this.setState({ thing: 'yo' });
   }
 
