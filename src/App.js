@@ -10,7 +10,11 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const { data : { hello : greeting } } = await get`
+    const { data : { 
+      hello : greeting,
+      aCoupleStuff: us,
+      randomPercent
+    } } = await get`
     query: {
       hello,
       randomPercent,
@@ -18,17 +22,21 @@ class App extends Component {
         babs,
         me
       }
-    }
-    `;
-    // const { data : { hello : greeting } } = await get();
-    this.setState({ greeting });
+    }`;
+    this.setState({ greeting, us, randomPercent });
   }
 
   render() {
-    const { greeting } = this.state;
+    const { greeting, us, randomPercent } = this.state;
     return (
       <div className="App">
         <h1>{greeting}</h1>
+        <i>here's a random percentage</i>
+        <p>{randomPercent}%</p>
+        <i>brought to you by</i>
+        {us &&
+          <p>{us.me} & {us.babs}</p>
+        }
       </div>
     );
   }
