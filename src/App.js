@@ -10,7 +10,17 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const { data : { hello : greeting } } = await get();
+    const { data : { hello : greeting } } = await get`
+    query: {
+      hello,
+      randomPercent,
+      aCoupleStuff {
+        babs,
+        me
+      }
+    }
+    `;
+    // const { data : { hello : greeting } } = await get();
     this.setState({ greeting });
   }
 
