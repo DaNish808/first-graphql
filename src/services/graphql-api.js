@@ -13,7 +13,9 @@ const url = 'http://localhost:4000/graphql';
       };
     `
 ********************************/
-export function get([input]) {
+export function get(input) {
+  console.log('input: ', input)
+  console.log(formatQuery(input))
   return fetch(url + formatQuery(input))
     .then(res => res.json());
 }
@@ -22,5 +24,5 @@ export function get([input]) {
 function formatQuery(queryStr) {
   return queryStr
     .replace(/\s/g, '')
-    .replace(/query:/, '?query=');
+    .replace(/query/, '?query=');
 }
